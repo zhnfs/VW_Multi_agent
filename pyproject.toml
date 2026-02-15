@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "acid-job-multi-agent"
+version = "0.1.0"
+description = "Databricks Streamlit multi-agent system for acid job identification and subtype classification"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Data Engineering Team" }]
+dependencies = [
+  "databricks-sql-connector>=3.5.0",
+  "langchain>=0.3.25",
+  "langchain-core>=0.3.60",
+  "langchain-openai>=0.2.7",
+  "mlflow>=2.14.0",
+  "pandas>=2.2.0",
+  "pydantic>=2.10.0",
+  "python-dotenv>=1.0.1",
+  "streamlit>=1.38.0",
+]
+
+[dependency-groups]
+dev = [
+  "mypy>=1.11.2",
+  "pytest>=8.3.0",
+  "pytest-cov>=5.0.0",
+  "ruff>=0.6.9",
+]
+
+[project.scripts]
+acid-agent-app = "acid_agent.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/acid_agent"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E203"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q --disable-warnings --maxfail=1"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+packages = ["acid_agent"]

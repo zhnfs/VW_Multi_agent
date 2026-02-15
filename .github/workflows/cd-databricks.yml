@@ -1,0 +1,31 @@
+name: cd-databricks
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      DATABRICKS_APP_NAME: ${{ secrets.DATABRICKS_APP_NAME }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Validate auth
+        run: databricks current-user me
+
+      - name: Ensure app exists
+        run: |
+          databricks apps get "$DATABRICKS_APP_NAME" >/dev/null 2>&1 || databricks apps create "$DATABRICKS_APP_NAME"
+
+      - name: Deploy app
+        run: databricks apps deploy "$DATABRICKS_APP_NAME" --source-code-path .
