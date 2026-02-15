@@ -1,45 +1,45 @@
-from acid_agent.agents import (
+from ops_assistant.agents import (
     ClassificationAgent,
     ExtractionAgent,
     MultiAgentOrchestrator,
     PlannerAgent,
     ValidationAgent,
 )
-from acid_agent.data_access import InMemoryRepository
-from acid_agent.models import AcidSubtype, ReportRecord
+from ops_assistant.data_access import InMemoryRepository
+from ops_assistant.models import EventSubtype, ReportRecord
 
 
 def test_end_to_end_pipeline_counts_and_subtypes() -> None:
     reports = [
         ReportRecord(
             report_id="R-001",
-            well_id="WELL-42",
+            asset_id="ASSET-42",
             report_date="2025-01-01",
-            report_text="Pumped 120 bbl 15% HCL acid wash through tubing to dissolve scale.",
+            report_text="Pumped 120 bbl 12% treatment blend in gamma sequence.",
         ),
         ReportRecord(
             report_id="R-002",
-            well_id="WELL-42",
+            asset_id="ASSET-42",
             report_date="2025-01-02",
-            report_text="Performed matrix acidizing stimulation across perforations.",
+            report_text="Performed alpha stage intervention across the interval.",
         ),
         ReportRecord(
             report_id="R-003",
-            well_id="WELL-42",
+            asset_id="ASSET-42",
             report_date="2025-01-03",
-            report_text="Executed acid frac stage at high pressure for fracture propagation.",
+            report_text="Executed beta treatment phase at high pressure for propagation.",
         ),
         ReportRecord(
             report_id="R-004",
-            well_id="WELL-42",
+            asset_id="ASSET-42",
             report_date="2025-01-04",
-            report_text="Spot acid spearhead preflush before main treatment and displacement.",
+            report_text="Performed delta treatment pre-stage before the main operation.",
         ),
         ReportRecord(
             report_id="R-005",
-            well_id="WELL-42",
+            asset_id="ASSET-42",
             report_date="2025-01-05",
-            report_text="Moved chemicals and inspected pump lines. No treatment performed.",
+            report_text="Moved materials and inspected pump lines. No operation performed.",
         ),
     ]
 
@@ -52,13 +52,13 @@ def test_end_to_end_pipeline_counts_and_subtypes() -> None:
     )
 
     response = orchestrator.answer(
-        question="For well WELL-42, give me acid job count and subtype distribution",
-        explicit_well_id="WELL-42",
+        question="For asset ASSET-42, give me event count and subtype distribution",
+        explicit_asset_id="ASSET-42",
     )
 
-    assert response.total_acid_jobs == 4
-    assert response.subtype_counts[AcidSubtype.ACID_WASH] == 1
-    assert response.subtype_counts[AcidSubtype.MATRIX_ACIDIZING] == 1
-    assert response.subtype_counts[AcidSubtype.ACID_FRACTURING] == 1
-    assert response.subtype_counts[AcidSubtype.ACID_SPEARHEAD] == 1
+    assert response.total_events == 4
+    assert response.subtype_counts[EventSubtype.CATEGORY_GAMMA] == 1
+    assert response.subtype_counts[EventSubtype.CATEGORY_ALPHA] == 1
+    assert response.subtype_counts[EventSubtype.CATEGORY_BETA] == 1
+    assert response.subtype_counts[EventSubtype.CATEGORY_DELTA] == 1
     assert response.faithful_score >= 0.5

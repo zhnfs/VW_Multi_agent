@@ -2,19 +2,19 @@ from __future__ import annotations
 
 import mlflow
 
-from acid_agent.agents.classifier import ClassificationAgent
-from acid_agent.agents.extractor import ExtractionAgent
-from acid_agent.agents.planner import PlannerAgent
-from acid_agent.agents.validator import ValidationAgent
-from acid_agent.data_access import WellReportRepository
-from acid_agent.mlflow_utils import run_context, traced_span
-from acid_agent.models import AgentResponse
+from ops_assistant.agents.classifier import ClassificationAgent
+from ops_assistant.agents.extractor import ExtractionAgent
+from ops_assistant.agents.planner import PlannerAgent
+from ops_assistant.agents.validator import ValidationAgent
+from ops_assistant.data_access import ReportRepository
+from ops_assistant.mlflow_utils import run_context, traced_span
+from ops_assistant.models import AgentResponse
 
 
 class MultiAgentOrchestrator:
     def __init__(
         self,
-        repository: WellReportRepository,
+        repository: ReportRepository,
         planner: PlannerAgent,
         extractor: ExtractionAgent,
         classifier: ClassificationAgent,
@@ -26,16 +26,16 @@ class MultiAgentOrchestrator:
         self.classifier = classifier
         self.validator = validator
 
-    def answer(self, question: str, explicit_well_id: str | None = None) -> AgentResponse:
-        run_name = f"acid-job-query-{(explicit_well_id or 'unknown').lower()}"
-        with run_context(run_name=run_name, tags={"app": "acid-job-agent"}):
+    def answer(self, question: str, explicit_asset_id: str | None = None) -> AgentResponse:
+        run_name = f"event-query-{(explicit_asset_id or 'unknown').lower()}"
+        with run_context(run_name=run_name, tags={"app": "ops-assistant"}):
             with traced_span("planning", {"question": question}):
-                plan = self.planner.plan(question=question, explicit_well_id=explicit_well_id)
+                plan = self.planner.plan(question=question, explicit_asset_id=explicit_asset_id)
 
-            with traced_span("fetch_reports", {"well_id": plan.well_id}):
-                reports = self.repository.fetch_reports(plan.well_id)
+            with traced_span("fetch_reports", {"asset_id": plan.asset_id}):
+                reports = self.repository.fetch_reports(plan.asset_id)
 
-            with traced_span("extract_jobs", {"report_count": str(len(reports))}):
+            with traced_span("extract_events", {"report_count": str(len(reports))}):
                 events = self.extractor.extract(reports)
 
             with traced_span("classify_subtypes", {"event_count": str(len(events))}):
@@ -44,16 +44,16 @@ class MultiAgentOrchestrator:
             with traced_span("validate", {"event_count": str(len(classified_events))}):
                 faithful_score, subtype_counts, warnings = self.validator.validate(
                     question=question,
-                    well_id=plan.well_id,
+                    asset_id=plan.asset_id,
                     intent=plan.intent,
                     events=classified_events,
                 )
 
             response = AgentResponse(
                 question=question,
-                well_id=plan.well_id,
+                asset_id=plan.asset_id,
                 intent=plan.intent,
-                total_acid_jobs=len(classified_events),
+                total_events=len(classified_events),
                 subtype_counts=subtype_counts,
                 events=classified_events,
                 faithful_score=faithful_score,
@@ -65,7 +65,7 @@ class MultiAgentOrchestrator:
 
     @staticmethod
     def _log_response_metrics(response: AgentResponse) -> None:
-        mlflow.log_metric("total_acid_jobs", float(response.total_acid_jobs))
+        mlflow.log_metric("total_events", float(response.total_events))
         mlflow.log_metric("faithful_score", response.faithful_score)
         for subtype, count in response.subtype_counts.items():
             mlflow.log_metric(f"subtype_count_{subtype.value}", float(count))

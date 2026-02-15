@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import streamlit as st
 
-from acid_agent.config import AppConfig
-from acid_agent.service import build_orchestrator
+from ops_assistant.config import AppConfig
+from ops_assistant.service import build_orchestrator
 
 PRESET_QUESTIONS = [
-    "How many acid jobs were performed for well {well_id}?",
-    "What are the acid job subtypes for well {well_id}?",
-    "For well {well_id}, give me both acid job count and subtype distribution.",
+    "How many target events were performed for asset {asset_id}?",
+    "What are the event subtypes for asset {asset_id}?",
+    "For asset {asset_id}, give me both event count and subtype distribution.",
 ]
 
 
@@ -28,23 +28,23 @@ def _append_message(role: str, content: str) -> None:
 
 
 def main() -> None:
-    st.set_page_config(page_title="Acid Job Intelligence", layout="wide")
+    st.set_page_config(page_title="Event Insight", layout="wide")
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
-    st.title("Acid Job Multi-Agent Assistant")
+    st.title("Event Insight Multi-Agent Assistant")
     st.caption(
-        "Databricks Streamlit app using LangChain multi-agent orchestration, "
-        "Unity Catalog daily reports, and MLflow tracing."
+        "Streamlit app using LangChain multi-agent orchestration, "
+        "report retrieval from Databricks SQL/Unity Catalog, and MLflow tracing."
     )
 
     config = AppConfig.from_env()
     with st.sidebar:
         st.header("Query Settings")
-        well_id = st.text_input("Well ID", value="", placeholder="e.g. WELL-1001")
+        asset_id = st.text_input("Asset ID", value="", placeholder="e.g. ASSET-1001")
         st.text_input(
-            "Unity Catalog Table",
+            "Databricks Table",
             value=config.fully_qualified_reports_table,
             disabled=True,
         )
@@ -53,13 +53,13 @@ def main() -> None:
     st.subheader("Preset Questions")
     preset_cols = st.columns(len(PRESET_QUESTIONS))
     for idx, question in enumerate(PRESET_QUESTIONS):
-        text = question.format(well_id=well_id or "<well_id>")
+        text = question.format(asset_id=asset_id or "<asset_id>")
         if preset_cols[idx].button(text, key=f"preset-{idx}", use_container_width=True):
             st.session_state["pending_question"] = text
 
     _render_chat_history()
 
-    typed_prompt = st.chat_input("Ask a question about acid jobs for a well")
+    typed_prompt = st.chat_input("Ask a question about target events for an asset")
     prompt = typed_prompt or st.session_state.pop("pending_question", None)
     if not prompt:
         return
@@ -68,8 +68,8 @@ def main() -> None:
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    if not well_id:
-        response_text = "Provide a `Well ID` in the sidebar before submitting a question."
+    if not asset_id:
+        response_text = "Provide an `Asset ID` in the sidebar before submitting a question."
         _append_message("assistant", response_text)
         with st.chat_message("assistant"):
             st.markdown(response_text)
@@ -77,7 +77,7 @@ def main() -> None:
 
     with st.chat_message("assistant"), st.spinner("Running multi-agent workflow..."):
         try:
-            response = _orchestrator().answer(question=prompt, explicit_well_id=well_id)
+            response = _orchestrator().answer(question=prompt, explicit_asset_id=asset_id)
         except Exception as exc:
             st.error(str(exc))
             _append_message("assistant", f"Error: {exc}")

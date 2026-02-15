@@ -15,15 +15,15 @@ PLANNER_PROMPT = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are a planning agent for oilfield report QA. "
-            "Return JSON only with keys intent and well_id. "
+            "You are a planning agent for event-report QA. "
+            "Return JSON only with keys intent and asset_id. "
             "intent must be one of: count, subtypes, both.",
         ),
         (
             "human",
             "Question: {question}\n"
-            "Optional explicit well id: {well_id}\n"
-            "Infer intent and well_id from the question when needed.",
+            "Optional explicit asset id: {asset_id}\n"
+            "Infer intent and asset_id from the question when needed.",
         ),
     ]
 )
@@ -33,8 +33,8 @@ CLASSIFIER_PROMPT = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You classify acid job text into exactly one subtype: "
-            "matrix_acidizing, acid_fracturing, acid_wash, acid_spearhead. "
+            "You classify event text into exactly one subtype: "
+            "category_alpha, category_beta, category_gamma, category_delta. "
             "Return JSON only with keys subtype and reasoning_short.",
         ),
         (

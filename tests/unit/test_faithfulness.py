@@ -1,15 +1,15 @@
-from acid_agent.faithfulness import combine_faithfulness, deterministic_faithfulness
-from acid_agent.models import AcidJobEvent, AcidSubtype
+from ops_assistant.faithfulness import combine_faithfulness, deterministic_faithfulness
+from ops_assistant.models import EventRecord, EventSubtype
 
 
-def _sample_event(confidence: float) -> AcidJobEvent:
-    return AcidJobEvent(
+def _sample_event(confidence: float) -> EventRecord:
+    return EventRecord(
         event_id="e1",
-        well_id="W-1",
+        asset_id="A-1",
         report_id="R-1",
         report_date="2025-01-01",
-        evidence_text="Pumped 100 bbl HCL acid wash treatment.",
-        subtype=AcidSubtype.ACID_WASH,
+        evidence_text="Pumped 100 bbl treatment blend in gamma sequence.",
+        subtype=EventSubtype.CATEGORY_GAMMA,
         confidence=confidence,
     )
 

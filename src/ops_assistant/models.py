@@ -12,51 +12,51 @@ class QueryIntent(StrEnum):
     BOTH = "both"
 
 
-class AcidSubtype(StrEnum):
-    MATRIX_ACIDIZING = "matrix_acidizing"
-    ACID_FRACTURING = "acid_fracturing"
-    ACID_WASH = "acid_wash"
-    ACID_SPEARHEAD = "acid_spearhead"
+class EventSubtype(StrEnum):
+    CATEGORY_ALPHA = "category_alpha"
+    CATEGORY_BETA = "category_beta"
+    CATEGORY_GAMMA = "category_gamma"
+    CATEGORY_DELTA = "category_delta"
 
 
 class ReportRecord(BaseModel):
     report_id: str
-    well_id: str
+    asset_id: str
     report_date: str
     report_text: str
 
 
-class AcidJobEvent(BaseModel):
+class EventRecord(BaseModel):
     event_id: str
-    well_id: str
+    asset_id: str
     report_id: str
     report_date: str
     evidence_text: str
-    subtype: AcidSubtype | None = None
+    subtype: EventSubtype | None = None
     confidence: float = Field(default=0.5, ge=0.0, le=1.0)
 
 
 class AgentPlan(BaseModel):
     intent: QueryIntent
-    well_id: str
+    asset_id: str
 
 
 class AgentResponse(BaseModel):
     question: str
-    well_id: str
+    asset_id: str
     intent: QueryIntent
-    total_acid_jobs: int
-    subtype_counts: dict[AcidSubtype, int]
-    events: list[AcidJobEvent]
+    total_events: int
+    subtype_counts: dict[EventSubtype, int]
+    events: list[EventRecord]
     faithful_score: float = Field(ge=0.0, le=1.0)
     warnings: list[str] = Field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "question": self.question,
-            "well_id": self.well_id,
+            "asset_id": self.asset_id,
             "intent": self.intent.value,
-            "total_acid_jobs": self.total_acid_jobs,
+            "total_events": self.total_events,
             "subtype_counts": {k.value: v for k, v in self.subtype_counts.items()},
             "faithful_score": round(self.faithful_score, 4),
             "warnings": self.warnings,
@@ -70,15 +70,15 @@ class AgentResponse(BaseModel):
         subtype_section = "\n".join(subtype_lines) if subtype_lines else "- no subtypes found"
 
         if self.intent == QueryIntent.COUNT:
-            answer = f"Detected {self.total_acid_jobs} acid job(s) for well `{self.well_id}`."
+            answer = f"Detected {self.total_events} target event(s) for asset `{self.asset_id}`."
         elif self.intent == QueryIntent.SUBTYPES:
             answer = (
-                f"Detected acid-job subtype distribution for well `{self.well_id}`:\n"
+                f"Detected subtype distribution for asset `{self.asset_id}`:\n"
                 f"{subtype_section}"
             )
         else:
             answer = (
-                f"Detected {self.total_acid_jobs} acid job(s) for well `{self.well_id}` "
+                f"Detected {self.total_events} target event(s) for asset `{self.asset_id}` "
                 "with subtype distribution:\n"
                 f"{subtype_section}"
             )

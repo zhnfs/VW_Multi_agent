@@ -4,7 +4,7 @@ import os
 
 from langchain_core.language_models.chat_models import BaseChatModel
 
-from acid_agent.config import AppConfig
+from ops_assistant.config import AppConfig
 
 
 def build_llm(config: AppConfig) -> BaseChatModel | None:

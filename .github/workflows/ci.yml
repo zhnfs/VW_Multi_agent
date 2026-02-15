@@ -27,4 +27,4 @@ jobs:
         run: uv run ruff check .
 
       - name: Unit and integration tests
-        run: uv run pytest --cov=src/acid_agent --cov-report=term-missing
+        run: uv run python -m pytest --cov=src/ops_assistant --cov-report=term-missing

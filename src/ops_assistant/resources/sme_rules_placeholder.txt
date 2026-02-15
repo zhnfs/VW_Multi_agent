@@ -1,0 +1,500 @@
+# SME Business Rules Placeholder for Event Insight Detection
+# Replace this with your production 500-line SME prompt when available.
+
+## Objective
+1. Identify whether a sentence describes a target event.
+2. Classify event into one of four subtypes:
+   - category_alpha
+   - category_beta
+   - category_gamma
+   - category_delta
+3. Avoid false positives from chemical inventory notes without treatment action.
+
+## Global Interpretation Rules
+- Treat the daily report as a chronological operating log.
+- Prioritize direct operational action verbs (pumped, performed, stimulated).
+- If text only states material on location, do not count as a job.
+- If text says planned/future, do not count until execution evidence exists.
+- Require at least one target indicator plus one action indicator.
+- Combine contiguous sentences as one event when they refer to same operation.
+
+## Subtype Definitions
+- category_alpha: near-zone target stimulation without intentional fracture propagation.
+- category_beta: target treatment with fracture initiation/propagation intent.
+- category_gamma: wash/cleanup/scale-removal focused target circulation or soak.
+- category_delta: spearhead/preflush/pad target stage preceding a larger treatment.
+
+## Synonym Dictionary
+- alpha event pattern = category_alpha
+- target frac / target-frac = category_beta
+- tubing wash with target = category_gamma
+- pad target / preflush / spearhead target = category_delta
+
+## Evidence Quality Heuristics
+- Strong evidence: operation verb + target chemical + volume/rate/pressure details.
+- Medium evidence: operation verb + target mention but limited numeric context.
+- Weak evidence: target mention with ambiguous action; review with caution.
+
+## Precision Rules
+- Do not infer target event from generic word 'stimulation' unless target is explicit.
+- Do not infer from pressure test, drillout, flowback, or rig activity unless target action is explicit.
+- If multiple target stages occur same day, count each stage only if log separates them as distinct jobs.
+
+## Placeholder Rule Blocks (replace with SME-supplied final rules)
+Rule 1: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 2: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 3: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 4: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 5: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 6: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 7: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 8: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 9: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 10: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 11: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 12: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 13: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 14: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 15: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 16: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 17: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 18: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 19: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 20: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 21: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 22: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 23: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 24: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 25: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 26: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 27: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 28: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 29: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 30: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 31: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 32: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 33: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 34: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 35: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 36: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 37: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 38: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 39: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 40: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 41: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 42: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 43: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 44: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 45: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 46: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 47: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 48: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 49: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 50: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 51: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 52: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 53: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 54: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 55: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 56: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 57: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 58: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 59: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 60: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 61: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 62: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 63: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 64: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 65: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 66: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 67: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 68: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 69: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 70: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 71: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 72: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 73: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 74: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 75: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 76: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 77: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 78: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 79: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 80: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 81: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 82: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 83: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 84: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 85: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 86: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 87: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 88: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 89: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 90: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 91: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 92: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 93: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 94: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 95: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 96: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 97: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 98: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 99: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 100: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 101: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 102: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 103: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 104: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 105: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 106: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 107: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 108: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 109: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 110: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 111: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 112: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 113: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 114: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 115: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 116: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 117: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 118: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 119: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 120: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 121: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 122: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 123: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 124: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 125: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 126: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 127: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 128: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 129: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 130: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 131: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 132: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 133: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 134: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 135: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 136: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 137: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 138: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 139: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 140: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 141: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 142: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 143: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 144: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 145: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 146: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 147: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 148: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 149: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 150: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 151: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 152: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 153: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 154: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 155: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 156: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 157: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 158: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 159: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 160: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 161: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 162: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 163: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 164: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 165: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 166: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 167: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 168: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 169: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 170: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 171: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 172: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 173: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 174: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 175: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 176: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 177: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 178: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 179: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 180: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 181: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 182: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 183: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 184: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 185: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 186: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 187: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 188: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 189: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 190: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 191: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 192: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 193: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 194: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 195: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 196: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 197: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 198: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 199: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 200: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 201: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 202: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 203: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 204: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 205: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 206: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 207: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 208: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 209: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 210: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 211: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 212: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 213: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 214: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 215: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 216: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 217: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 218: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 219: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 220: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 221: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 222: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 223: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 224: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 225: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 226: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 227: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 228: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 229: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 230: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 231: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 232: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 233: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 234: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 235: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 236: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 237: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 238: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 239: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 240: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 241: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 242: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 243: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 244: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 245: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 246: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 247: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 248: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 249: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 250: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 251: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 252: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 253: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 254: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 255: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 256: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 257: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 258: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 259: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 260: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 261: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 262: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 263: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 264: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 265: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 266: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 267: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 268: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 269: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 270: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 271: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 272: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 273: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 274: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 275: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 276: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 277: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 278: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 279: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 280: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 281: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 282: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 283: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 284: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 285: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 286: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 287: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 288: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 289: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 290: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 291: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 292: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 293: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 294: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 295: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 296: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 297: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 298: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 299: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 300: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 301: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 302: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 303: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 304: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 305: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 306: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 307: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 308: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 309: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 310: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 311: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 312: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 313: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 314: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 315: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 316: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 317: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 318: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 319: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 320: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 321: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 322: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 323: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 324: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 325: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 326: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 327: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 328: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 329: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 330: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 331: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 332: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 333: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 334: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 335: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 336: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 337: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 338: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 339: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 340: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 341: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 342: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 343: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 344: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 345: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 346: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 347: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 348: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 349: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 350: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 351: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 352: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 353: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 354: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 355: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 356: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 357: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 358: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 359: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 360: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 361: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 362: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 363: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 364: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 365: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 366: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 367: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 368: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 369: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 370: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 371: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 372: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 373: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 374: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 375: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 376: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 377: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 378: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 379: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 380: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 381: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 382: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 383: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 384: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 385: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 386: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 387: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 388: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 389: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 390: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 391: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 392: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 393: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 394: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 395: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 396: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 397: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 398: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 399: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 400: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 401: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 402: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 403: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 404: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 405: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 406: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 407: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 408: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 409: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 410: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 411: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 412: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 413: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 414: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 415: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 416: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 417: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 418: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 419: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 420: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 421: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 422: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 423: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 424: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 425: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 426: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 427: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 428: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 429: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 430: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 431: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 432: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 433: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 434: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 435: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 436: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 437: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 438: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 439: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 440: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 441: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 442: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 443: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 444: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 445: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 446: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 447: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 448: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 449: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+Rule 450: Evaluate context window +/-2 sentences, prioritize explicit target operation evidence, and classify to the closest subtype while preserving conservative precision.
+
+## Output Contract
+- Return structured JSON.
+- Include event_id, report_id, evidence_text, subtype, and confidence.
+- Confidence should reflect quality of textual support, not model certainty only.
+Rule 451: Placeholder extension for SME prompt fidelity and consistency checks.
+Rule 452: Placeholder extension for exception handling and ambiguity resolution.

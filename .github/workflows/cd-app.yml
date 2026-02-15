@@ -1,4 +1,4 @@
-name: cd-databricks
+name: cd-app
 
 on:
   workflow_dispatch:

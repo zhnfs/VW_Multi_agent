@@ -3,9 +3,9 @@ requires = ["hatchling>=1.25.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "acid-job-multi-agent"
-version = "0.1.0"
-description = "Databricks Streamlit multi-agent system for acid job identification and subtype classification"
+name = "event-insight-multi-agent"
+version = "0.2.0"
+description = "Streamlit multi-agent system for event extraction and subtype classification"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Data Engineering Team" }]
@@ -30,10 +30,10 @@ dev = [
 ]
 
 [project.scripts]
-acid-agent-app = "acid_agent.app:main"
+ops-assistant-app = "ops_assistant.app:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/acid_agent"]
+packages = ["src/ops_assistant"]
 
 [tool.ruff]
 line-length = 100
@@ -53,4 +53,4 @@ python_version = "3.11"
 strict = true
 warn_return_any = true
 warn_unused_configs = true
-packages = ["acid_agent"]
+packages = ["ops_assistant"]

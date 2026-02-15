@@ -3,17 +3,15 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
-from acid_agent.models import AcidSubtype
+from ops_assistant.models import EventSubtype
 
-ACID_KEYWORDS = {
-    "acid",
-    "hcl",
-    "hydrochloric",
-    "mud acid",
-    "hcl/hf",
-    "organic acid",
-    "acidized",
-    "acidizing",
+TRIGGER_KEYWORDS = {
+    "chemical",
+    "treatment",
+    "intervention",
+    "service fluid",
+    "blend",
+    "additive",
 }
 
 ACTION_KEYWORDS = {
@@ -22,15 +20,13 @@ ACTION_KEYWORDS = {
     "perform",
     "performed",
     "job",
-    "treatment",
-    "stimulation",
-    "bullhead",
-    "squeeze",
-    "spot",
+    "operation",
+    "execute",
+    "executed",
+    "stage",
     "circulate",
-    "wash",
-    "frac",
-    "fracture",
+    "flush",
+    "inject",
 }
 
 STRONG_ACTION_KEYWORDS = {
@@ -39,11 +35,8 @@ STRONG_ACTION_KEYWORDS = {
     "performed",
     "executed",
     "completed",
-    "treatment",
-    "acid frac",
-    "acid wash",
-    "matrix acid",
-    "stimulation",
+    "operation",
+    "stage",
 }
 
 NEGATIVE_CONTEXT_KEYWORDS = {
@@ -59,36 +52,18 @@ NEGATIVE_CONTEXT_KEYWORDS = {
     "will pump",
 }
 
-SUBTYPE_KEYWORDS: dict[AcidSubtype, tuple[str, ...]] = {
-    AcidSubtype.ACID_FRACTURING: (
-        "acid frac",
-        "acid-frac",
-        "fracture",
-        "frac",
-        "etching",
+SUBTYPE_KEYWORDS: dict[EventSubtype, tuple[str, ...]] = {
+    EventSubtype.CATEGORY_ALPHA: (
+        "alpha",
     ),
-    AcidSubtype.ACID_WASH: (
-        "acid wash",
-        "washed",
-        "tubing wash",
-        "cleanup",
-        "scale removal",
-        "dissolve scale",
+    EventSubtype.CATEGORY_BETA: (
+        "beta",
     ),
-    AcidSubtype.ACID_SPEARHEAD: (
-        "spearhead",
-        "preflush",
-        "pad acid",
-        "spot acid",
-        "spotted acid",
+    EventSubtype.CATEGORY_GAMMA: (
+        "gamma",
     ),
-    AcidSubtype.MATRIX_ACIDIZING: (
-        "matrix",
-        "bullhead",
-        "stimulation",
-        "near-wellbore",
-        "acidize",
-        "acidized",
+    EventSubtype.CATEGORY_DELTA: (
+        "delta",
     ),
 }
 
@@ -110,39 +85,39 @@ def _contains_any(text: str, terms: Iterable[str]) -> bool:
     return any(term in text for term in terms)
 
 
-def is_acid_job_sentence(text: str) -> bool:
+def is_target_event_sentence(text: str) -> bool:
     normalized = normalize_text(text)
-    has_acid = _contains_any(normalized, ACID_KEYWORDS)
+    has_trigger = _contains_any(normalized, TRIGGER_KEYWORDS)
     has_action = _contains_any(normalized, ACTION_KEYWORDS)
     has_strong_action = _contains_any(normalized, STRONG_ACTION_KEYWORDS)
     has_negative_context = _contains_any(normalized, NEGATIVE_CONTEXT_KEYWORDS)
     if has_negative_context and not has_strong_action:
         return False
-    return has_acid and has_action and has_strong_action
+    return has_trigger and has_action and has_strong_action
 
 
-def infer_subtype_by_rules(text: str) -> AcidSubtype:
+def infer_category_by_rules(text: str) -> EventSubtype:
     normalized = normalize_text(text)
 
     for subtype in (
-        AcidSubtype.ACID_FRACTURING,
-        AcidSubtype.ACID_WASH,
-        AcidSubtype.ACID_SPEARHEAD,
-        AcidSubtype.MATRIX_ACIDIZING,
+        EventSubtype.CATEGORY_ALPHA,
+        EventSubtype.CATEGORY_BETA,
+        EventSubtype.CATEGORY_GAMMA,
+        EventSubtype.CATEGORY_DELTA,
     ):
         if _contains_any(normalized, SUBTYPE_KEYWORDS[subtype]):
             return subtype
 
-    return AcidSubtype.MATRIX_ACIDIZING
+    return EventSubtype.CATEGORY_ALPHA
 
 
-def score_sentence_confidence(text: str, subtype: AcidSubtype) -> float:
+def score_sentence_confidence(text: str, subtype: EventSubtype) -> float:
     normalized = normalize_text(text)
 
-    acid_hit = 1.0 if _contains_any(normalized, ACID_KEYWORDS) else 0.0
+    trigger_hit = 1.0 if _contains_any(normalized, TRIGGER_KEYWORDS) else 0.0
     action_hit = 1.0 if _contains_any(normalized, ACTION_KEYWORDS) else 0.0
     subtype_hit = 1.0 if _contains_any(normalized, SUBTYPE_KEYWORDS[subtype]) else 0.0
-    detail_hit = 1.0 if re.search(r"\b\d+(?:\.\d+)?\s*(?:bbl|gal|%)\b", normalized) else 0.0
+    detail_hit = 1.0 if re.search(r"\b\d+(?:\.\d+)?\s*(?:bbl|gal|%|psi)\b", normalized) else 0.0
 
-    score = 0.35 * acid_hit + 0.25 * action_hit + 0.30 * subtype_hit + 0.10 * detail_hit
+    score = 0.35 * trigger_hit + 0.25 * action_hit + 0.30 * subtype_hit + 0.10 * detail_hit
     return min(1.0, max(0.0, score))

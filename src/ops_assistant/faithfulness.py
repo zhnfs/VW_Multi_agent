@@ -6,11 +6,11 @@ from statistics import mean
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import BaseMessage
 
-from acid_agent.models import AcidJobEvent
-from acid_agent.prompts import VALIDATOR_PROMPT
+from ops_assistant.models import EventRecord
+from ops_assistant.prompts import VALIDATOR_PROMPT
 
 
-def deterministic_faithfulness(events: list[AcidJobEvent]) -> float:
+def deterministic_faithfulness(events: list[EventRecord]) -> float:
     if not events:
         return 1.0
 
@@ -27,7 +27,7 @@ def llm_faithfulness(
     llm: BaseChatModel | None,
     question: str,
     answer: str,
-    events: list[AcidJobEvent],
+    events: list[EventRecord],
 ) -> float | None:
     if llm is None:
         return None

@@ -5,8 +5,8 @@ import json
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import BaseMessage
 
-from acid_agent.models import AcidJobEvent, AcidSubtype
-from acid_agent.prompts import CLASSIFIER_PROMPT, load_sme_business_rules
+from ops_assistant.models import EventRecord, EventSubtype
+from ops_assistant.prompts import CLASSIFIER_PROMPT, load_sme_business_rules
 
 
 class ClassificationAgent:
@@ -15,8 +15,8 @@ class ClassificationAgent:
         self.llm_threshold = llm_threshold
         self.rules = load_sme_business_rules()
 
-    def classify(self, events: list[AcidJobEvent]) -> list[AcidJobEvent]:
-        classified: list[AcidJobEvent] = []
+    def classify(self, events: list[EventRecord]) -> list[EventRecord]:
+        classified: list[EventRecord] = []
         for event in events:
             updated_event = event
 
@@ -33,14 +33,14 @@ class ClassificationAgent:
             # Safety default to one of the 4 allowed subtype labels.
             if updated_event.subtype is None:
                 updated_event = updated_event.model_copy(
-                    update={"subtype": AcidSubtype.MATRIX_ACIDIZING}
+                    update={"subtype": EventSubtype.CATEGORY_ALPHA}
                 )
 
             classified.append(updated_event)
 
         return classified
 
-    def _classify_with_llm(self, evidence: str) -> AcidSubtype | None:
+    def _classify_with_llm(self, evidence: str) -> EventSubtype | None:
         chain = CLASSIFIER_PROMPT | self.llm
         try:
             response = chain.invoke({"rules": self.rules, "evidence": evidence})
@@ -54,7 +54,7 @@ class ClassificationAgent:
 
         subtype_value = str(payload.get("subtype", "")).strip().lower()
         try:
-            return AcidSubtype(subtype_value)
+            return EventSubtype(subtype_value)
         except ValueError:
             return None
 

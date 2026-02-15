@@ -1,22 +1,22 @@
-from acid_agent.business_rules import infer_subtype_by_rules, is_acid_job_sentence
-from acid_agent.models import AcidSubtype
+from ops_assistant.business_rules import infer_category_by_rules, is_target_event_sentence
+from ops_assistant.models import EventSubtype
 
 
-def test_is_acid_job_sentence_positive() -> None:
-    text = "Pumped 120 bbl 15% HCL acid treatment to stimulate the interval."
-    assert is_acid_job_sentence(text)
+def test_is_target_event_sentence_positive() -> None:
+    text = "Pumped 120 bbl 12% treatment blend in phase A operation."
+    assert is_target_event_sentence(text)
 
 
-def test_is_acid_job_sentence_negative() -> None:
-    text = "Moved acid totes to location and prepared pumps for tomorrow."
-    assert not is_acid_job_sentence(text)
+def test_is_target_event_sentence_negative() -> None:
+    text = "Moved treatment totes to location and prepared pumps for tomorrow."
+    assert not is_target_event_sentence(text)
 
 
-def test_infer_subtype_fracturing() -> None:
-    text = "Performed acid frac stage with high pressure fracture extension."
-    assert infer_subtype_by_rules(text) == AcidSubtype.ACID_FRACTURING
+def test_infer_subtype_beta() -> None:
+    text = "Performed beta stage with high pressure execution details."
+    assert infer_category_by_rules(text) == EventSubtype.CATEGORY_BETA
 
 
-def test_infer_subtype_wash() -> None:
-    text = "Completed tubing acid wash to dissolve scale and clean completion."
-    assert infer_subtype_by_rules(text) == AcidSubtype.ACID_WASH
+def test_infer_subtype_gamma() -> None:
+    text = "Completed gamma sequence to circulate and clean the interval."
+    assert infer_category_by_rules(text) == EventSubtype.CATEGORY_GAMMA

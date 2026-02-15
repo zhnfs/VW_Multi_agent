@@ -1,4 +1,4 @@
-from acid_agent.app import main
+from ops_assistant.app import main
 
 if __name__ == "__main__":
     main()

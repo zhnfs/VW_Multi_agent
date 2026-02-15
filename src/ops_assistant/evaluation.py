@@ -2,16 +2,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from acid_agent.agents.orchestrator import MultiAgentOrchestrator
-from acid_agent.models import AcidSubtype
+from ops_assistant.agents.orchestrator import MultiAgentOrchestrator
+from ops_assistant.models import EventSubtype
 
 
 @dataclass(frozen=True)
 class LabeledCase:
     question: str
-    well_id: str
+    asset_id: str
     expected_count: int
-    expected_subtypes: dict[AcidSubtype, int]
+    expected_subtypes: dict[EventSubtype, int]
 
 
 @dataclass(frozen=True)
@@ -35,8 +35,8 @@ def evaluate_accuracy(
     subtype_hits = 0
 
     for case in cases:
-        response = orchestrator.answer(question=case.question, explicit_well_id=case.well_id)
-        if response.total_acid_jobs == case.expected_count:
+        response = orchestrator.answer(question=case.question, explicit_asset_id=case.asset_id)
+        if response.total_events == case.expected_count:
             count_hits += 1
         if response.subtype_counts == case.expected_subtypes:
             subtype_hits += 1

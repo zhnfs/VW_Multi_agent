@@ -4,7 +4,7 @@
 - CI workflow: `.github/workflows/ci.yml`
   - Installs dependencies with `uv`
   - Runs lint + tests
-- CD workflow: `.github/workflows/cd-databricks.yml`
+- CD workflow: `.github/workflows/cd-app.yml`
   - Authenticates Databricks CLI
   - Creates app if missing
   - Deploys source code to Databricks App
@@ -24,7 +24,7 @@ Add these in GitHub repo settings under **Secrets and variables > Actions**:
 ```bash
 uv sync --group dev
 uv run ruff check .
-uv run pytest
+uv run python -m pytest
 ```
 
 ## Manual Deployment (Fallback)
@@ -41,7 +41,7 @@ databricks apps deploy <app-name> --source-code-path .
 ```
 
 ## Production Hardening Checklist
-1. Replace placeholder SME prompt in `src/acid_agent/resources/sme_rules_placeholder.txt`.
+1. Replace placeholder SME prompt in `src/ops_assistant/resources/sme_rules_placeholder.txt`.
 2. Add a labeled benchmark suite and fail CI if accuracy drops below 95%.
 3. Rotate Databricks tokens to service principal auth.
 4. Add environment-specific workflows (dev/staging/prod) with approvals.

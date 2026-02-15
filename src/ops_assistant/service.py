@@ -1,27 +1,27 @@
 from __future__ import annotations
 
-from acid_agent.agents import (
+from ops_assistant.agents import (
     ClassificationAgent,
     ExtractionAgent,
     MultiAgentOrchestrator,
     PlannerAgent,
     ValidationAgent,
 )
-from acid_agent.config import AppConfig
-from acid_agent.data_access import DatabricksUCRepository, WellReportRepository
-from acid_agent.llm import build_llm
-from acid_agent.mlflow_utils import initialize_mlflow
+from ops_assistant.config import AppConfig
+from ops_assistant.data_access import ReportRepository, SqlWarehouseRepository
+from ops_assistant.llm import build_llm
+from ops_assistant.mlflow_utils import initialize_mlflow
 
 
 def build_orchestrator(
     config: AppConfig | None = None,
-    repository_override: WellReportRepository | None = None,
+    repository_override: ReportRepository | None = None,
 ) -> MultiAgentOrchestrator:
     app_config = config or AppConfig.from_env()
     initialize_mlflow(app_config.mlflow_experiment_name)
 
     llm = build_llm(app_config)
-    repository = repository_override or DatabricksUCRepository(app_config)
+    repository = repository_override or SqlWarehouseRepository(app_config)
 
     return MultiAgentOrchestrator(
         repository=repository,
